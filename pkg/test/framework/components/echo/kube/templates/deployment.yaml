@@ -109,8 +109,6 @@ spec:
 {{- range $i, $p := $appContainer.ContainerPorts }}
 {{- if and $p.XDSServer (eq .Protocol "GRPC") }}
           - --xds-grpc-server={{ $p.Port }}
-{{- else if $p.EndpointPicker }}
-          - --endpoint-picker={{ $p.Port }}
 {{- else if eq .Protocol "GRPC" }}
           - --grpc={{ $p.Port }}
 {{- else if eq .Protocol "TCP" }}
